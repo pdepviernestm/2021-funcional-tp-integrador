@@ -5,7 +5,7 @@ import Test.Hspec
 import Control.Exception (evaluate)
 
 unaPersona :: Persona
-unaPersona = Persona { felicidonios = 10, sueños = 1, edad = 20}
+unaPersona = Persona { felicidonios = 10, sueños = 1, edad = 20, habilidades= [] }
 
 correrTests :: IO ()
 correrTests = hspec $ do
@@ -25,6 +25,12 @@ correrTests = hspec $ do
          gradoDeAmbicion (unaPersona {edad = 20, sueños = 3, felicidonios = 70}) `shouldBe` 60
        it "si es poco feliz es el doble de la cantidad de sueños" $ do
          gradoDeAmbicion (unaPersona{felicidonios=10, sueños=3}) `shouldBe` 6
+     describe "Los sueños sueños son..." $ do
+       describe "recibirse de una carrera" $ do  
+        it "aumenta sus felicidonios en 1000 * la longitud del nombre de la carrera, y agrega la carrera como habilidad" $ do
+          recibirseDeUnaCarrera "Arquitectura" (unaPersona{felicidonios = 0, habilidades = []}) `shouldBe` unaPersona{felicidonios = 12000, habilidades = ["Arquitectura"]}
+        it "si la persona ya tiene esa carrera, al recibirse queda igual" $ do
+          recibirseDeUnaCarrera "Arquitectura" (unaPersona{felicidonios = 0,habilidades =["Arquitectura"]}) `shouldBe`(unaPersona{felicidonios = 0,habilidades =["Arquitectura"]})
 
 escribime :: Expectation
 escribime = implementame

@@ -4,9 +4,10 @@ import PdePreludat
 data Persona = Persona {
     felicidonios :: Number,
     sueños :: Number,
-    edad :: Number
-}
-
+    edad :: Number,
+    habilidades :: [Habilidad]
+} deriving (Show, Eq)
+type Habilidad = String
 data Felicidad = Alta | Media | Baja deriving (Show, Eq)
 
 nivelDeFelicidad :: Persona -> Felicidad
@@ -64,11 +65,14 @@ gradoDeAmbicion persona
 
 -- Elegimos un valor de ejemplo que representa a cada clase de equivalencia (muy feliz, poco feliz y moderadamente feliz). También, en el primero elegimos el 50 porque es un caso borde. 
 
--- Anoten el nombre:
 
--- Juan
--- Tomi
--- Ciro
--- Valentina
--- Juani
--- Maxi
+-- recibirseDeUnaCarrera:: Habilidad->Persona->Persona
+-- recibirseDeUnaCarrera habilidad (Persona felicidonios sueños edad habilidades)
+--     |any (==habilidad) habilidades = Persona felicidonios sueños edad habilidades
+--     |otherwise = Persona (felicidonios+1000*(length habilidad)) sueños edad (habilidad:habilidades)
+
+
+recibirseDeUnaCarrera:: Habilidad->Persona->Persona
+recibirseDeUnaCarrera habilidad (Persona felicidonios sueños edad habilidades)
+    |elem habilidad habilidades = Persona felicidonios sueños edad habilidades
+    |otherwise = Persona (felicidonios+1000*(length habilidad)) sueños edad (habilidad:habilidades)
