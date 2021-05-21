@@ -58,6 +58,12 @@ gradoDeAmbicion persona
 --     Media -> felicidonios persona * sueños persona
 --     Alta -> felicidonios persona * edad persona
 
+
+-- c) Para los tests que hayan escrito para a y b, explicar por qué eligieron los casos de prueba que eligieron respecto de los felicidonios.
+-- Es decir, si en mi grupo hiciésemos 2 tests para el punto a) y eligiéramos  una persona con 60 felicidonios para un test y una con 30 para el otro, explicar por qué elegimos 60 y 30.
+
+-- Elegimos un valor de ejemplo que representa a cada clase de equivalencia (muy feliz, poco feliz y moderadamente feliz). También, en el primero elegimos el 50 porque es un caso borde. 
+
 -- Anoten el nombre:
 
 -- Juan
